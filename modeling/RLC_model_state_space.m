@@ -8,6 +8,12 @@ Bu = [1;1];
 c = [1, 0];
 d = 0;
 
+figure(2)
+S = ss(A,b,c,d);
+G = tf(S);
+impulseplot(G);
+
+
 Q=1; R=10;   %�G��
 N = 10;
 
@@ -32,9 +38,7 @@ plot(1:N,y,'k:',1:N,x(:,1),'r--',1:N,xhat(:,1),'b-')
 xlabel('No. of samples')
 legend('measured','true','estimate')
 
-%S = ss(A,b,c,d);
-%G = tf(S);
-%impulseplot(G);
+
 
 %%���`�J���}���t�B���^��function��
 function [xhat_new,P_new, G] = kf(A,B,Bu,C,Q,R,u,y,xhat,P)
@@ -56,7 +60,6 @@ function [xhat_new,P_new, G] = kf(A,B,Bu,C,Q,R,u,y,xhat,P)
 %   xhat_new: �X�V��̏�Ԑ���l xhat(k)
 %   P_new: �X�V��̌덷�����U�s�� P(k)
 %   G: �J���}���Q�C��
-
 % �Q�l:
 %   ����`�V�X�e���ւ̊g��: EKF, UKF
 % ��x�N�g���ɐ��`
